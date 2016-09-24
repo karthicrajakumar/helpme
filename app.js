@@ -12,6 +12,7 @@ var jwt    = require('jsonwebtoken');
 var User = require('./app/models/user');
 var saves = require ('./routes/save');
 var login = require('./routes/login');
+var community = require('./routes/community');
 var io = require('socket.io').listen(app.listen(3003));
 
 var app = express();
@@ -75,6 +76,8 @@ function authenticate(req,res,next){
 
   }
 };
+
+app.use('/community',authenticate,community);
 
 
 // catch 404 and forward to error handler

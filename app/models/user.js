@@ -12,7 +12,7 @@ var UserSchema = new Schema({
   token:{type:String},
   name : {type:String},
   age: { type: String},
-  phoneNo : {type: Number},
+  phoneNo : {type: String},
   sex:{type:String},
   home_community : {type: Schema.Types.Mixed, ref: 'Community' },
   current_community : {type: Schema.Types.Mixed, ref: 'Community' },

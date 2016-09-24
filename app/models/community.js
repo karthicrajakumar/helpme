@@ -3,9 +3,10 @@ var mongoose = require('mongoose'),
 
 var CommunitySchema = new Schema({
     name : {type:String},
-    nss-members:{type: Schema.Types.Mixed, ref: 'User' },
-    doctors : {type: Schema.Types.Mixed, ref: 'User'},
-    beat-officers:{type: Schema.Types.Mixed, ref: 'User'}
+    nss:{type: Schema.Types.ObjectId, ref: 'User' },
+    doctors : {type: Schema.Types.ObjectId, ref: 'User'},
+    beat:{type: Schema.Types.ObjectId, ref: 'User'}
     
     
 });
+module.exports = mongoose.model('Community',CommunitySchema);
