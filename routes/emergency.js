@@ -22,7 +22,7 @@ router.post('/',function(req,res){
       }
       
       console.log(doc);
-      io.sockets.emit(home+"_emergency",{result:doc}); // how?
+      io.sockets.emit("emergency",{result:doc}); // how?
 
     });
     return res.json({success: true, message:"Success" });
