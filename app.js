@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose  = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/helpme');
+var app = express();
 var routes = require('./routes/index');
 var jwt    = require('jsonwebtoken');
 var User = require('./app/models/user');
