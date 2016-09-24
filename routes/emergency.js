@@ -11,6 +11,7 @@ router.post('/',function(req,res){
     var home = req.body.home;
     var lat = req.body.lat;
     var long = req.body.long;
+    var internet = req.body.net;
     var io = req.io;
     
     var emergency  = new Emergency({
@@ -18,7 +19,8 @@ router.post('/',function(req,res){
        lat : lat,
        long : long,
        community: home,
-       resolved : false
+       resolved : false,
+       internet : internet
         
     });
     emergency.save(function(err,emer){
@@ -74,20 +76,23 @@ router.post('/resolved',function(req,res){
                   io.sockets.emit(home+"_emergency_abort_nss",{result:doc});
                   io.sockets.emit(home+"_emergency_abort_doctor",{result:doc});
                   io.sockets.emit(post.user.username+"_emergency_abort",{result:doc});
-             
+            var boolean = post.internet;
+            if(boolean == "false")
+            {
             request.post(
                 'http://api.textlocal.in/send/',
                 { form: { 'username': 'redrageclan@gmail.com',
                          'hash':'77899f2bdb7e1611cd11ebb7e7bacc6f5bf117e6',
-'sender':"TXTLCL",
-'numbers':post.user.phoneNo,
-'message'	: "Help is On Your Way "+user.name+"is on your way to help You"} },
+                         'sender':"TXTLCL",
+                         'numbers':post.user.phoneNo,
+                         'message'	: "Help is On Your Way "+user.name+"is on your way to help You"}                 },
                 function (error, response, body) {
                     if (!error && response.statusCode == 200) {
                         console.log(body)
                     }
                 }
             );
+              }
             
             return res.json({success: true, message:doc });
        });

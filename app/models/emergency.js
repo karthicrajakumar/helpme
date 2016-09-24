@@ -6,8 +6,8 @@ var EmergencySchema = new Schema({
     lat:{type:String},
     long:{type:String},
     community:{type:String},
-    resolved:{type: Boolean}
-    
+    resolved:{type: Boolean},
+    internet:{type:String}
     
 });
 module.exports = mongoose.model('Emergency',EmergencySchema);
