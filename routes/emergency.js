@@ -62,12 +62,16 @@ router.post('/resolved',function(req,res){
                 
                 
               }
-
-              console.log(home+"_emergency_abort");
-              io.sockets.emit(home+"_emergency_abort",{result:doc}); // how?
-             
-            return res.json({success: true, message:"Success" });
-
+              
+              Emergency.findOne({'_id':emergency_id}).populate('user').exec(function(err,post){
+                  
+             if (err) return handleError(err);
+              console.log(post.user);
+              io.sockets.emit(home+"_emergency_abort",{result:doc});                io.sockets.emit(post.user.username+"_emergency_abort",{result:doc});
+              
+            
+            return res.json({success: true, message:doc });
+       });
             });
         
         
