@@ -10,7 +10,8 @@ router.post('/', function(req,res) {
 		phoneNo : req.body.phoneNo,
 		sex:req.body.sex,
         role: req.body.role,
-        age:req.body.age
+        age:req.body.age,
+        home_community:req.body.home
 		
 
 	});

@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 var CommunitySchema = new Schema({
     name : {type:String},
+    helpline: {type:String},
     nss:{type: Schema.Types.ObjectId, ref: 'User' },
     doctors : {type: Schema.Types.ObjectId, ref: 'User'},
     beat:{type: Schema.Types.ObjectId, ref: 'User'}
