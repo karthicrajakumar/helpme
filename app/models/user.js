@@ -14,8 +14,8 @@ var UserSchema = new Schema({
   age: { type: String},
   phoneNo : {type: String},
   sex:{type:String},
-  home_community : {type: Schema.Types.Mixed, ref: 'Community' },
-  current_community : {type: Schema.Types.Mixed, ref: 'Community' },
+  home_community : {type:String },
+  current_community : {type: String },
   role: {type:String}
 
 

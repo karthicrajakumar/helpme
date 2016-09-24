@@ -9,7 +9,8 @@ router.post('/',function(req,res){
         name : req.body.name,
         nss: req.body.nss,
         doctors:req.body.doc,
-        beat:req.body.beat
+        beat:req.body.beat,
+        helpline: req.body.helpline
         
     });
     

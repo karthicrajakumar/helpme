@@ -37,7 +37,7 @@ io.on('connection', function (socket) {
 
 app.use(function(req,res,next){
     req.io = io;
-    req.id = id;
+    
     next();
 });
 

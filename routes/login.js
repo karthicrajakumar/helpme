@@ -2,11 +2,12 @@ var express = require('express');
 var router = express.Router();
 var User = require('../app/models/user');
 var jwt    = require('jsonwebtoken');
-
+var Community = require('../app/models/community');
 
 
 router.post('/',function(req,res){
 	//var user = new User({
+    var helpline;
 	//	username: req.body.username,
 	//	password : req.body.password
 	//});
@@ -41,7 +42,15 @@ router.post('/',function(req,res){
 						if(err) {
 							return res.json({success:false , message: "Could Not Save User"});
 						}else {
-							return res.json({
+               console.log(user.home_community); Community.find({'name':user.home_community},function(err,comm){ 
+                    
+                    
+                    
+               
+                            
+				
+                            
+                return res.json({
 				          success: true,
 				          message: 'Successfully Logged in ',
 				          token: token,
@@ -50,9 +59,12 @@ router.post('/',function(req,res){
                           age: user.age,
                           role:user.role,
 				          phoneNo : user.phoneNo,
-				          sex:user.sex
+				          sex:user.sex,
+                          helpline: comm[0].helpline
 								});
+                    });
 						};
+                                                                
 					});
 			};
 		});
