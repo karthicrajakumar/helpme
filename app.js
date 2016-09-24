@@ -15,7 +15,7 @@ var login = require('./routes/login');
 var community = require('./routes/community');
 var io = require('socket.io').listen(app.listen(3003));
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +32,12 @@ io.on('connection', function (socket) {
 
 
  });
+});
+
+app.use(function(req,res,next){
+    req.io = io;
+    req.id = id;
+    next();
 });
 
 
