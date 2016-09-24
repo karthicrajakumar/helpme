@@ -38,7 +38,9 @@ router.post('/',function(req,res){
               }
 
               console.log(doc);
-              io.sockets.emit(home+"_emergency",{result:doc}); // how?
+              io.sockets.emit(home+"_emergency_beat",{result:doc});
+            io.sockets.emit(home+"_emergency_nss",{result:doc});
+            io.sockets.emit(home+"_emergency_doctor",{result:doc});// how?
 
             });
             return res.json({success: true, message:"Success" });
@@ -67,7 +69,10 @@ router.post('/resolved',function(req,res){
                   
              if (err) return handleError(err);
               console.log(post.user);
-              io.sockets.emit(home+"_emergency_abort",{result:doc});                io.sockets.emit(post.user.username+"_emergency_abort",{result:doc});
+              io.sockets.emit(home+"_emergency_abort_beat",{result:doc});
+                  io.sockets.emit(home+"_emergency_abort_nss",{result:doc});
+                  io.sockets.emit(home+"_emergency_abort_doctor",{result:doc});
+                  io.sockets.emit(post.user.username+"_emergency_abort",{result:doc});
               
             
             return res.json({success: true, message:doc });
