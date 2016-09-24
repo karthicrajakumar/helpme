@@ -11,13 +11,27 @@ var jwt    = require('jsonwebtoken');
 var User = require('./app/models/user');
 var saves = require ('./routes/save');
 var login = require('./routes/login');
-
+var io = require('socket.io').listen(app.listen(3003));
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+//socket code
+io.on('connection', function (socket) {
+    console.log('client connect');
+     id = socket.id
+     console.log("id"+id)
+
+    socket.on('echo', function (data) {
+    io.sockets.emit('message', data);
+
+
+ });
+});
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
