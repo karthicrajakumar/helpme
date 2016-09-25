@@ -60,7 +60,8 @@ router.post('/',function(req,res){
                           role:user.role,
 				          phoneNo : user.phoneNo,
 				          sex:user.sex,
-                          helpline: comm[0].helpline
+                          helpline: comm[0].helpline,
+                          emergencynumber: user.emergencynumber
 								});
                     });
 						};
