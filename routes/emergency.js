@@ -85,7 +85,7 @@ router.post('/resolved',function(req,res){
                          'hash':'77899f2bdb7e1611cd11ebb7e7bacc6f5bf117e6',
                          'sender':"TXTLCL",
                          'numbers':post.user.phoneNo,
-                         'message'	: "Help is On Your Way "+user[0].name+" is on your way to help You. His/Her Number is,"+user[0].phoneNo+","+user[0].name+","+user[0].sex+","+user[0].role+","+user[0].role}                 },
+                         'message'	: "Help is On Your Way "+user[0].name+" is on your way to help You. His/Her Number is,"+user[0].phoneNo+","+user[0].name+","+user[0].sex+","+user[0].role+","+user[0].age}                 },
                 function (error, response, body) {
                     if (!error && response.statusCode == 200) {
                         console.log(body)
@@ -93,8 +93,8 @@ router.post('/resolved',function(req,res){
                 }
             );
               }
-                  //console.log(post.user.phoneNo);
-                  //console.log(user[0].name);
+                  console.log(post.user.phoneNo);
+                  console.log(user[0].name);
             
             return res.json({success: true, message:doc });
        });
