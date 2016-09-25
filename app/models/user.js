@@ -16,7 +16,8 @@ var UserSchema = new Schema({
   sex:{type:String},
   home_community : {type:String },
   current_community : {type: String },
-  role: {type:String}
+  role: {type:String},
+    emergencynumber:{type:String}
 
 
 

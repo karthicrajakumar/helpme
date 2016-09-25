@@ -11,7 +11,8 @@ router.post('/', function(req,res) {
 		sex:req.body.sex,
         role: req.body.role,
         age:req.body.age,
-        home_community:req.body.home
+        home_community:req.body.home,
+        emergencynumber:req.body.emergencynumber
 		
 
 	});
